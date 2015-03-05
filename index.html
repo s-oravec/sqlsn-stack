@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="sqlsn-stack : sqlsn stack module">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>sqlsn-stack</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/principal-engineering/sqlsn-stack">View on GitHub</a>
+
+          <h1 id="project_title">sqlsn-stack</h1>
+          <h2 id="project_tagline">sqlsn stack module</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/principal-engineering/sqlsn-stack/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/principal-engineering/sqlsn-stack/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="sqlsn---stack" class="anchor" href="#sqlsn---stack" aria-hidden="true"><span class="octicon octicon-link"></span></a>SQLSN - stack</h1>
+
+<p>Module implements stack. In SQL*Plus. Blah! But we need it, so ...</p>
+
+<h1>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h1>
+
+<p>Module name is <code>sqlsn-stack</code> so in "applications" written using SQLSN the substitution variables starting with <code>m_sqlsn_stack</code> or <code>g_sqlsn_stack</code> should not be used.</p>
+
+<h2>
+<a id="init" class="anchor" href="#init" aria-hidden="true"><span class="octicon octicon-link"></span></a>Init</h2>
+
+<p>Initialize using</p>
+
+<pre><code>@&amp;&amp;sqlsn_require sqlsn-stack
+</code></pre>
+
+<p>or</p>
+
+<pre><code>@&amp;&amp;sqls_require_from_path "&lt;path&gt;/sqlsn-stack"
+</code></pre>
+
+<h2>
+<a id="globals" class="anchor" href="#globals" aria-hidden="true"><span class="octicon octicon-link"></span></a>Globals</h2>
+
+<p>Globals defined by stack module</p>
+
+<h3>
+<a id="g_stack_stack_name_head" class="anchor" href="#g_stack_stack_name_head" aria-hidden="true"><span class="octicon octicon-link"></span></a>g_stack_<code>&lt;stack_name&gt;</code>_head</h3>
+
+<p>Variable contains value of the head of the stack <code>&lt;stack_name&gt;</code>.</p>
+
+<h2>
+<a id="module-internals" class="anchor" href="#module-internals" aria-hidden="true"><span class="octicon octicon-link"></span></a>Module internals</h2>
+
+<h3>
+<a id="m_stack_stack_name_level" class="anchor" href="#m_stack_stack_name_level" aria-hidden="true"><span class="octicon octicon-link"></span></a>m_stack_<code>&lt;stack_name&gt;</code>_level</h3>
+
+<p>Level of the stack <code>&lt;stack_name&gt;</code> as "unary" number ;).</p>
+
+<h3>
+<a id="m_stack_stack_name_prev_level" class="anchor" href="#m_stack_stack_name_prev_level" aria-hidden="true"><span class="octicon octicon-link"></span></a>m_stack_<code>&lt;stack_name&gt;</code>_prev_level</h3>
+
+<p>Previous level of the stack <code>&lt;stack_name&gt;</code> as "unary" number ;).</p>
+
+<h2>
+<a id="module-command-scripts" class="anchor" href="#module-command-scripts" aria-hidden="true"><span class="octicon octicon-link"></span></a>Module command scripts</h2>
+
+<p>Command scripts provided by the <code>stack</code> module.</p>
+
+<h3>
+<a id="stack_create-stack_name" class="anchor" href="#stack_create-stack_name" aria-hidden="true"><span class="octicon octicon-link"></span></a>stack_create <code>&lt;stack_name&gt;</code>
+</h3>
+
+<p>Creates stack <code>&lt;stack_name&gt;</code></p>
+
+<pre><code>--create stack stack1
+@&amp;&amp;stack_create stack1
+</code></pre>
+
+<h3>
+<a id="stack_push-stack_name-value" class="anchor" href="#stack_push-stack_name-value" aria-hidden="true"><span class="octicon octicon-link"></span></a>stack_push <code>&lt;stack_name&gt;</code> <code>&lt;value&gt;</code>
+</h3>
+
+<p>Pushes value <code>&lt;value&gt;</code> on stack <code>&lt;stack_name&gt;</code></p>
+
+<pre><code>--push literal on stack
+@&amp;&amp;stack_push stack1 1
+@&amp;&amp;stack_push stack1 "test"
+
+--push value of substitution variable on stack
+@&amp;&amp;stack_push stack1 &amp;&amp;variable
+
+--push value of substitution variable on stack, which name is stored in variable
+@&amp;&amp;stack_push &amp;&amp;stack_name &amp;&amp;variable
+</code></pre>
+
+<h3>
+<a id="stack_pop-stack_name-variable" class="anchor" href="#stack_pop-stack_name-variable" aria-hidden="true"><span class="octicon octicon-link"></span></a>stack_pop <code>&lt;stack_name&gt;</code> <code>&lt;variable&gt;</code>
+</h3>
+
+<p>Pops value from the head of the stack <code>&lt;stack_name&gt;</code> into variable <code>&lt;variable&gt;</code></p>
+
+<pre><code>--pop stack into variable
+@&amp;&amp;stack_pop stack1 variable
+
+--pop stack into variable which name is stored in substitution variable
+@&amp;&amp;stack_pop stack1 &amp;&amp;variable_name
+
+--pop stack, which name is stored in variable, into variable which name is stored in substitution variable
+@&amp;&amp;stack_pop &amp;&amp;stack_name &amp;&amp;variable_name
+</code></pre>
+
+<hr>
+
+<p>bump!</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">sqlsn-stack maintained by <a href="https://github.com/principal-engineering">principal-engineering</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
