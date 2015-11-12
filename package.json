@@ -1,0 +1,40 @@
+{
+  "name": "sqlsn-stack",
+  "version": "0.1.0",
+  "description": "SQLSN Core",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "grunt test --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/s-oravec/sqlsn-stack.git"
+  },
+  "keywords": [
+    "SQLSN",
+    "SQL",
+    "SQL*Plus",
+    "Oracle"
+  ],
+  "author": "Štefan Oravec <stefan.oravec@me.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/s-oravec/sqlsn-stack/issues"
+  },
+  "homepage": "https://github.com/s-oravec/sqlsn-stack#readme",
+  "devDependencies": {
+    "bluebird": "^3.0.1",
+    "chai": "^3.4.0",
+    "chai-as-promised": "^5.1.0",
+    "chalk": "^1.1.1",
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-mocha-test": "^0.12.7",
+    "lodash": "^3.10.1",
+    "mocha": "^2.3.3",
+    "shelljs": "^0.5.3"
+  }
+}

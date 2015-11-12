@@ -1,0 +1,21 @@
+{
+  "name": "sqlsn-stack",
+  "version": "0.1.0",
+  "description": "SQLSN Stack module",
+  "author" : "Štefan Oravec <stefan.oravec@me.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/s-oravec/sqlsn-stack.git"
+  },
+  "keywords": [
+    "SQL", "SQL*Plus", "SQL Plus", "Oracle"
+  ],
+  "bugs": {
+    "url": "https://github.com/s-oravec/sqlsn-stack/issues"
+  },
+  "homepage": "https://github.com/s-oravec/sqlsn-stack#readme",
+  "dependencies" : {
+    "sqlsn-core" : "^0.1.0"
+  }
+}
