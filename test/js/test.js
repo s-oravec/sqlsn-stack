@@ -22,7 +22,7 @@ describe('SQLSN Stack', function() {
 
   var sqlplusOutputShouldMatch = function(output) {
     // 0. replace [ and ] in *.test.sql with "
-    // 1. split output on \n into linesArray
+    // 1. split output on \n into array and for each line
     // 2. split output on " into linePartsArray
     // 3. linePartsArray[1].should.be.equal(linePartsArray[3])
     _.forEach(output.split('\n'), function(line) {
@@ -33,7 +33,7 @@ describe('SQLSN Stack', function() {
     });
   };
 
-  it('should load stack module', function(done) {
+  it('sqlsn-core should load sqlns-stack module', function(done) {
     shell.exec('sql /nolog @stack_module_should_load.test.sql', function(code, output) {
       code.should.be.equal(0);
       output.should.match(/module sqlsn-stack successfully loaded/g);
@@ -44,7 +44,7 @@ describe('SQLSN Stack', function() {
     });
   });
 
-  it('stack_create should create empty stack', function(done) {
+  it('@&&stack_create should create empty stack', function(done) {
     shell.exec('sql /nolog @create_should_work.test.sql', function(code, output) {
       code.should.be.equal(0);
       sqlplusOutputShouldMatch(output);
@@ -52,8 +52,32 @@ describe('SQLSN Stack', function() {
     });
   });
 
-  it('stack_push should push value on stack', function(done) {
+  it('@&&stack_push should push value on stack', function(done) {
     shell.exec('sql /nolog @push_should_work.test.sql', function(code, output) {
+      code.should.be.equal(0);
+      sqlplusOutputShouldMatch(output);
+      done();
+    });
+  });
+
+  it('@&&stack_pop should pop value from stack into variable', function(done) {
+    shell.exec('sql /nolog @pop_should_work.test.sql', function(code, output) {
+      code.should.be.equal(0);
+      sqlplusOutputShouldMatch(output);
+      done();
+    });
+  });
+
+  it('combinations of push and pop should work', function(done) {
+    shell.exec('sql /nolog @push_and_pop_should_work.test.sql', function(code, output) {
+      code.should.be.equal(0);
+      sqlplusOutputShouldMatch(output);
+      done();
+    });
+  });
+
+  it('it should be possible to create more stacks and use them concurrently', function(done) {
+    shell.exec('sql /nolog @two_stacks_should_work.test.sql', function(code, output) {
       code.should.be.equal(0);
       sqlplusOutputShouldMatch(output);
       done();
