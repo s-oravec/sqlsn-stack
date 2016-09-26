@@ -11,9 +11,7 @@
   "keywords": [
     "SQL", "SQL*Plus", "SQL Plus", "Oracle"
   ],
-  "bugs": {
-    "url": "https://github.com/s-oravec/sqlsn-stack/issues"
-  },
+  "bugs": "https://github.com/s-oravec/sqlsn-stack/issues",
   "homepage": "https://github.com/s-oravec/sqlsn-stack#readme",
   "dependencies" : {
     "sqlsn-core" : "^0.1.0"

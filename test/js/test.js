@@ -14,8 +14,6 @@ shell.config.silent = true;
 
 describe('SQLSN Stack', function() {
 
-  this.timeout(50000);
-
   beforeEach(function(){
     shell.pushd('test/sql');
   });
@@ -34,6 +32,7 @@ describe('SQLSN Stack', function() {
   };
 
   it('sqlsn-core should load sqlns-stack module', function(done) {
+    this.timeout(5000);
     shell.exec('sql /nolog @stack_module_should_load.test.sql', function(code, output) {
       code.should.be.equal(0);
       output.should.match(/module sqlsn-stack successfully loaded/g);
@@ -45,6 +44,7 @@ describe('SQLSN Stack', function() {
   });
 
   it('@&&stack_create should create empty stack', function(done) {
+    this.timeout(5000);
     shell.exec('sql /nolog @create_should_work.test.sql', function(code, output) {
       code.should.be.equal(0);
       sqlplusOutputShouldMatch(output);
@@ -53,6 +53,7 @@ describe('SQLSN Stack', function() {
   });
 
   it('@&&stack_push should push value on stack', function(done) {
+    this.timeout(5000);
     shell.exec('sql /nolog @push_should_work.test.sql', function(code, output) {
       code.should.be.equal(0);
       sqlplusOutputShouldMatch(output);
@@ -61,6 +62,7 @@ describe('SQLSN Stack', function() {
   });
 
   it('@&&stack_pop should pop value from stack into variable', function(done) {
+    this.timeout(5000);
     shell.exec('sql /nolog @pop_should_work.test.sql', function(code, output) {
       code.should.be.equal(0);
       sqlplusOutputShouldMatch(output);
@@ -69,6 +71,7 @@ describe('SQLSN Stack', function() {
   });
 
   it('combinations of push and pop should work', function(done) {
+    this.timeout(5000);
     shell.exec('sql /nolog @push_and_pop_should_work.test.sql', function(code, output) {
       code.should.be.equal(0);
       sqlplusOutputShouldMatch(output);
@@ -77,6 +80,7 @@ describe('SQLSN Stack', function() {
   });
 
   it('it should be possible to create more stacks and use them concurrently', function(done) {
+    this.timeout(5000);
     shell.exec('sql /nolog @two_stacks_should_work.test.sql', function(code, output) {
       code.should.be.equal(0);
       sqlplusOutputShouldMatch(output);
